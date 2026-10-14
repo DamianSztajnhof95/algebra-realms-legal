@@ -1,0 +1,143 @@
+:root {
+  color-scheme: dark;
+  --ink: #f7f2df;
+  --muted: #b9b29f;
+  --gold: #f0c96a;
+  --gold-soft: rgba(240, 201, 106, 0.14);
+  --line: rgba(240, 201, 106, 0.28);
+  --panel: rgba(22, 27, 40, 0.9);
+  --bg: #090c14;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--bg); }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 18% 5%, rgba(54, 91, 133, 0.28), transparent 34rem),
+    radial-gradient(circle at 85% 32%, rgba(105, 66, 31, 0.2), transparent 30rem),
+    linear-gradient(155deg, #0b1020, var(--bg) 55%);
+  line-height: 1.68;
+}
+
+a { color: var(--gold); text-underline-offset: 0.2em; }
+a:hover { color: #ffe4a0; }
+a:focus-visible { outline: 3px solid #fff1bd; outline-offset: 4px; border-radius: 4px; }
+
+.site-header {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.4rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--ink);
+  font-weight: 750;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  background: var(--gold-soft);
+  font-family: Georgia, serif;
+  font-size: 1.25rem;
+}
+
+nav { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; }
+nav a { color: var(--muted); text-decoration: none; }
+nav a[aria-current="page"] { color: var(--gold); }
+
+.hero, .document {
+  width: min(920px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.hero { min-height: 72vh; display: grid; align-items: center; padding: 5rem 0; }
+.hero-copy { width: 100%; }
+
+.eyebrow {
+  margin: 0 0 0.65rem;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+h1, h2 { font-family: Georgia, "Times New Roman", serif; line-height: 1.16; }
+h1 { max-width: 780px; margin: 0; font-size: clamp(2.4rem, 7vw, 5.2rem); letter-spacing: -0.035em; }
+.document h1 { font-size: clamp(2.3rem, 6vw, 4.4rem); }
+h2 { margin: 2.6rem 0 0.7rem; color: #fff7dc; font-size: clamp(1.35rem, 3vw, 1.75rem); }
+
+.lead { max-width: 720px; color: var(--muted); font-size: 1.15rem; }
+.updated { margin: 0.8rem 0 2.5rem; color: var(--muted); }
+
+.card-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.card {
+  min-height: 260px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: var(--ink);
+  background: linear-gradient(145deg, rgba(31, 38, 56, 0.92), var(--panel));
+  text-decoration: none;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.18);
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+.card:hover { transform: translateY(-3px); border-color: var(--gold); color: var(--ink); }
+.card h2 { margin: 1rem 0 0.5rem; font-size: 1.45rem; }
+.card p { margin: 0; color: var(--muted); }
+.card-icon { color: var(--gold); font-family: Georgia, serif; font-size: 1.8rem; }
+.card-link { margin-top: auto; padding-top: 1.4rem; color: var(--gold); font-weight: 750; }
+
+.document { max-width: 780px; padding: 4.5rem 0 5rem; }
+.document p, .document li { color: #d3ccba; }
+.document strong { color: var(--ink); }
+.document li + li { margin-top: 0.55rem; }
+.callout { margin-top: 2.5rem; padding: 1rem 1.2rem; border-left: 3px solid var(--gold); background: var(--gold-soft); }
+
+footer {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+footer p { margin: 0; }
+
+@media (max-width: 760px) {
+  .site-header, footer { align-items: flex-start; flex-direction: column; }
+  .card-grid { grid-template-columns: 1fr; }
+  .card { min-height: 220px; }
+  .hero { padding: 3.5rem 0; }
+  .document { padding: 3.5rem 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+}
